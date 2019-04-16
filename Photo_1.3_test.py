@@ -11,6 +11,8 @@ from os import chmod
 import datetime
 
 n = 1
+#path = '/mnt/yandex_disk/pap_3/'
+path = './pap_2/'
 
 def INPUT_MIN(): #  ввод и проверка на корректность длительности съемки
     print('Длительность съемки в минутах')
@@ -53,8 +55,8 @@ for i in range(int(RANGE)):
     if (n-1) % 10 == 0:
         today = datetime.datetime.today()  # создаем объект datatime
         DIR = today.strftime("%H_%M_%S_%d-%m-%Y")  # записываем в переменную текущее время и дату
-        mkdir('./pap_2/'+DIR)
-        chmod('./pap_2/'+DIR, 0o777)
+        mkdir(path+DIR)
+        chmod(path+DIR, 0o777)
 
     LEN_RANGE = len(str(int(RANGE)))
     h = '0' * LEN_RANGE
@@ -64,5 +66,5 @@ for i in range(int(RANGE)):
     y = h[0:(0-LEN_n)] + str(n)
     
     sleep(SLEEP) #  задержка
-    camera.capture('./pap_2/' + DIR + '/photo.' + y + '.jpg')
+    camera.capture(path + DIR + '/photo.' + y + '.jpg')
     n += 1
